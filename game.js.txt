@@ -1,0 +1,42 @@
+// game.js
+let balance = Number(localStorage.getItem('tauxiu_balance')) || 1000;
+updateBalance();
+
+function rollDice() {
+  return Math.floor(Math.random() * 6) + 1;
+}
+
+function placeBet(choice) {
+  const betAmount = parseInt(document.getElementById("betAmount").value);
+  if (isNaN(betAmount) || betAmount <= 0) {
+    alert("Nhập số tiền cược hợp lệ!");
+    return;
+  }
+  if (betAmount > balance) {
+    alert("Không đủ tiền để cược!");
+    return;
+  }
+
+  const d1 = rollDice(), d2 = rollDice(), d3 = rollDice();
+  const total = d1 + d2 + d3;
+  let win = false;
+  if ((total >= 11 && total <= 17 && choice === "tai") ||
+      (total >= 4 && total <= 10 && choice === "xiu")) {
+    win = true;
+    balance += betAmount;
+  } else {
+    balance -= betAmount;
+  }
+
+  localStorage.setItem('tauxiu_balance', balance);
+  document.getElementById("diceResult").innerText =
+    `🎲 Xúc xắc: ${d1}, ${d2}, ${d3} → Tổng: ${total}`;
+  document.getElementById("gameResult").innerText =
+    win ? `🎉 Bạn thắng! Bạn ${win?'nhận thêm':'bị trừ'} ${betAmount} vàng.` 
+        : `❌ Bạn thua! Bị trừ ${betAmount} vàng.`;
+  updateBalance();
+}
+
+function updateBalance() {
+  document.getElementById("balance").innerText = balance;
+}

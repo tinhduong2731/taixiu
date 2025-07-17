@@ -1,0 +1,22 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Tài Xỉu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🎲 Game Tài Xỉu</h1>
+  <p>Số dư: <span id="balance">1000</span> 💰</p>
+  <label>Tiền cược:
+    <input type="number" id="betAmount" value="100" min="1">
+  </label>
+  <br>
+  <button onclick="placeBet('tai')">Cược Tài (11–17)</button>
+  <button onclick="placeBet('xiu')">Cược Xỉu (4–10)</button>
+  <div id="diceResult"></div>
+  <div id="gameResult"></div>
+  <script src="game.js"></script>
+</body>
+</html>

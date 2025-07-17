@@ -1,0 +1,30 @@
+/* style.css */
+body {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fafafa;
+  padding: 40px;
+}
+h1 { font-size: 36px; }
+button {
+  padding: 12px 24px;
+  margin: 8px;
+  font-size: 18px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover { background: #45a049; }
+input[type="number"] {
+  width: 100px;
+  padding: 6px;
+  margin: 10px;
+  font-size: 16px;
+}
+#diceResult, #gameResult {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
